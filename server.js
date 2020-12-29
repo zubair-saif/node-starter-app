@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const config = require('dotenv').config({ path: './.env' });
+const config = require('dotenv');
 const cors = require('cors');
 const compression = require('compression');
 const colors = require('colors');
@@ -11,6 +11,9 @@ const error = require('./middleware/errorHandler');
 
 app.use(compression());
 app.use(express.json());
+
+//Load envirnoment variable 
+config.config({ path: './.env' });
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {
