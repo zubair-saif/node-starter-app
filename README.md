@@ -13,7 +13,6 @@ Nodejs Starter App is fully configured, modular starter project for developing a
 - Modular architecture that's easy to support and extend
 
 ## First Run of Nodejs Starter App
-===============================
 
 1. Clone the stable branch of Nodejs Starter App
 
