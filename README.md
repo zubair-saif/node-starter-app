@@ -30,8 +30,6 @@ npm i
 
 **NOTE**: After successfull installation of dependancy before running your app create **.env**  in main folder route and copy the content from env-example file and paste into env file after that run this command.
 
-3. Run the starter app in development mode:
-
 ```
 nodemon
 ```
