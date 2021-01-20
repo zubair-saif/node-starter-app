@@ -34,7 +34,7 @@ npm i
 nodemon
 ```
 
-The server application will be running on [http://localhost:7000],The terminal will tell your the exact ports.
+The server application will be running on [http://localhost:7000](),The terminal will tell your the exact ports.
 
 ## Project Structure
 
