@@ -7,7 +7,7 @@ const colors = require('colors');
 const app = express();
 const morgan = require('morgan');
 const connectDB = require('./config/db');
-const error = require('./middleware/errorHandler');
+const error = require('./middleware/error.middleware');
 const { hostname } = require('os');
 
 app.use(compression());
