@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const mediaController = require('../controllers/mediaController')
+const mediaController = require('../controllers/media.controller')
 const multer = require('multer');
 
 // let storage = multer.diskStorage({

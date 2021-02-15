@@ -8,6 +8,7 @@ const app = express();
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const error = require('./middleware/errorHandler');
+const { hostname } = require('os');
 
 app.use(compression());
 app.use(express.json());
@@ -24,9 +25,9 @@ if (process.env.NODE_ENV === 'development') {
 app.use(cors());
 
 // Mount routers
-require('./app/media/routesDefinations/mediaRoutesDefs')(app);
-require('./app/programs/routesDefinations/programsRouteDefs')(app);
-require('./app/extras/routeDefinations/extrasRouteDefs')(app);
+require('./app/media/routesDefinations/media.routesDefs')(app);
+require('./app/programs/routesDefinations/programs.routeDefs')(app);
+require('./app/extras/routesDefinations/extras.routeDefs')(app);
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,7 +40,7 @@ app.use(error);
 const PORT = process.env.PORT || 7000;
 app.listen(PORT, () => {
     console.log(
-        `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+        `Server running in ${process.env.NODE_ENV} mode on port http://localhost:${PORT}`.yellow
     );
 });
 

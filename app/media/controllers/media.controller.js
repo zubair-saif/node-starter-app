@@ -1,5 +1,5 @@
 
-const { Media } = require('../models/mediaM');
+const { Media } = require('../models/media.model');
 
 module.exports.uploadProgramsIcon = async (req, res) => {
 

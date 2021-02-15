@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const programsController = require('../controller/programsController');
+const programsController = require('../controller/programs.controller');
 const multer = require('multer');
 
 let storage = multer.diskStorage({
     destination: 'uploads',
     filename: function (req, file, cb) {
         cb(null, + Date.now() + '.' + file.originalname
-        .split('.')[file.originalname.split('.').length - 1]);
+            .split('.')[file.originalname.split('.').length - 1]);
     }
 })
 

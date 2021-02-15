@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const extrasController = require('../controller/extrasController');
+const extrasController = require('../controller/extras.controller');
 
 // router.post('/create', uploadFiles, extrasController.create);
 

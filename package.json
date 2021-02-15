@@ -2,9 +2,9 @@
   "name": "starter-nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server",
+    "start": "nodemon server.js",
     "dev": "nodemon"
   },
   "keywords": [],

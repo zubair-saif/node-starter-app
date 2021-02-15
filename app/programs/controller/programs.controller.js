@@ -1,6 +1,6 @@
 'use strict';
 const fs = require('fs');
-const { Programs, validate } = require('../models/programsM');
+const { Programs, validate } = require('../models/programs.model');
 
 /**
  * @create new program with file upload
