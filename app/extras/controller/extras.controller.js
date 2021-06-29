@@ -5,6 +5,8 @@ const Extras = require('../models/extras.model');
 
 /**
  * delete programs
+ * @req 
+ * @res 
 */
 module.exports.delete = async (req, res) => {
     try {
