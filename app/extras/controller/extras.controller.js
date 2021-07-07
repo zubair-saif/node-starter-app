@@ -8,7 +8,7 @@ const Extras = require('../models/extras.model');
 */
 module.exports.delete = async (req, res) => {
     try {
-
+       
         const deleteExtras = await Extras.findByIdAndRemove(req.params.id);
         if (!deleteExtras) {
             return res.json({ message: "programs not found " });
