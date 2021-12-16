@@ -3,7 +3,11 @@ const joi = require('joi');
 
 const schema = new mongoose.Schema({
 
-    name: {
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName:{
         type: String,
         required: true
     },
@@ -17,8 +21,8 @@ const schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    bio: {
-        type: String,
+    phoneNumber: {
+        type: Number,
     },
     profilePic: {
         type: String,
@@ -39,6 +43,6 @@ function validate(users) {
     return schema.validate(users);
 }
 
-const Users = mongoose.model('users', schema);
+const Users = mongoose.model('User', schema);
 module.exports.validate = validate;
 module.exports.Users = Users;
