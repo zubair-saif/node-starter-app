@@ -47,8 +47,8 @@ connectDB();
 
 app.use(error);
 
-const PORT = process.env.PORT || 7000;
-const server=app.listen(PORT, () => {
+const port = process.env.PORT || 7000;
+const server=app.listen(port, () => {
     console.log(
         `Server running in ${process.env.NODE_ENV} mode on port http://localhost:${PORT}`.yellow
     );
