@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(halmet({
     contentSecurityPolicy: false,
     frameguard: true,
-}))
+}));
 
 //Load envirnoment variable 
 config.config({ path: './.env' });
@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(cors());
 
 // Ping app for testing connection
-app.get("/ping", (req, res) => res.status(200).send("Hello world!"))
+app.get("/ping", (req, res) => res.status(200).send("Hello world!"));
 
 // Mount routers
 require('./app/media/routesDefinations/media.routesDefs')(app);
