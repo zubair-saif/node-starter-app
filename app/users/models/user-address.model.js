@@ -4,31 +4,37 @@ const joi = require("joi");
 const schema = new mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    addressLine1: {
+    address: {
       type: String,
       required: true,
-    },
-    addressLine2: {
-      type: String,
     },
     city: {
       type: String,
       required: true,
     },
-    postalCode: {
-      type: Number,
-      required:true
-    },
-    telephone: {
+    state: {
       type: String,
     },
-    mobile: {
-        type: String,
-      },
+    country: {
+      type: String,
+    },
+    zipCode: {
+      type: Number,
+      required: true,
+    },
+    isDefault: {
+      type: Boolean,
+      default: false
+    },
+    updated: Date,
+    created: {
+      type: Date,
+      default: Date.now
+    }
   },
-  { versionKey: false, timestamps: true }
+  // { versionKey: false, timestamps: true }
 );
 
-const UsersAdress = mongoose.model("User_Adress", schema);
+const UsersAddress = mongoose.model("Address", schema);
 module.exports.validate = validate;
-module.exports.UsersAdress = UsersAdress;
+module.exports.UsersAddress = UsersAddress;

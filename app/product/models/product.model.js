@@ -17,24 +17,36 @@ const schema = new mongoose.Schema(
     sku: {
       type: String,
     },
-    itemImage: {
-        type: String,
-      },
+    imageUrl: {
+      type: String,
+    },
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
     },
+    taxable: {
+      type: Boolean,
+      default: false
+    },
+    isActive: {
+      type: Boolean,
+      default: true
+    },
     inventory: {
       type: Number,
-    //   ref: "Inventory",
+      //   ref: "Inventory",
     },
     // discount: {
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: "Discount",
     //   },
-    
+    updated: Date,
+    created: {
+      type: Date,
+      default: Date.now,
+    },
   },
-  { versionKey: false, timestamps: true }
+  // { versionKey: false, timestamps: true }
 );
 
 // function validate(users) {

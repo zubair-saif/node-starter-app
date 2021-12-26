@@ -6,13 +6,17 @@ const compression = require('compression');
 const colors = require('colors');
 const app = express();
 const morgan = require('morgan');
+const halmet=require('helmet');
 const connectDB = require('./config/db');
 const error = require('./middleware/error.middleware');
 
 
 app.use(compression());
 app.use(express.json());
-
+app.use(halmet({
+    contentSecurityPolicy: false,
+    frameguard: true,
+}))
 //Load envirnoment variable 
 config.config({ path: './.env' });
 
@@ -38,7 +42,7 @@ connectDB();
 app.use(error);
 
 const PORT = process.env.PORT || 7000;
-app.listen(PORT, () => {
+const server=app.listen(PORT, () => {
     console.log(
         `Server running in ${process.env.NODE_ENV} mode on port http://localhost:${PORT}`.yellow
     );
