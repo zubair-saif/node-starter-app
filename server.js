@@ -28,11 +28,15 @@ if (process.env.NODE_ENV === 'development') {
 // enable cors
 app.use(cors());
 
+// Ping app for testing connection
+app.get("/ping", (req, res) => res.status(200).send("Hello world!"))
+
 // Mount routers
 require('./app/media/routesDefinations/media.routesDefs')(app);
 require('./app/programs/routesDefinations/programs.routeDefs')(app);
 require('./app/extras/routesDefinations/extras.routeDefs')(app);
 require('./app/product/routesDefinations/product.routeDefs')(app);
+
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
