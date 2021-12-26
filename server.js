@@ -50,7 +50,7 @@ app.use(error);
 const port = process.env.PORT || 7000;
 const server=app.listen(port, () => {
     console.log(
-        `Server running in ${process.env.NODE_ENV} mode on port http://localhost:${PORT}`.yellow
+        `Server running in ${process.env.NODE_ENV} mode on port http://localhost:${port}`.yellow
     );
 });
 
