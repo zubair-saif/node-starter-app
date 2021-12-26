@@ -7,9 +7,10 @@ const colors = require('colors');
 const app = express();
 const morgan = require('morgan');
 const halmet=require('helmet');
+
+// custom module import
 const connectDB = require('./config/db');
 const error = require('./middleware/error.middleware');
-
 
 app.use(compression());
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use(halmet({
     contentSecurityPolicy: false,
     frameguard: true,
 }))
+
 //Load envirnoment variable 
 config.config({ path: './.env' });
 
