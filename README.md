@@ -36,6 +36,3 @@ nodemon
 
 The server application will be running on [http://localhost:7000](),The terminal will tell your the exact ports.
 
-## Project Structure
-
->in progress i will update soon readme file 
