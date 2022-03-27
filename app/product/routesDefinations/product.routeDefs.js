@@ -1,6 +1,5 @@
-const productRoute = require('../routes/product.route');
+const productRoute = require("../routes/product.route");
 
 module.exports = function (app) {
-    app.use('/api/v1/product', productRoute);
-
-}
+  app.use("/api/v1/products", productRoute);
+};

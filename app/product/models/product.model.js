@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
-const joi = require("joi");
+// const joi = require("joi");
 
 const schema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
-      required: true,
     },
     description: {
       type: String,
@@ -17,7 +16,7 @@ const schema = new mongoose.Schema(
     sku: {
       type: String,
     },
-    imageUrl: {
+    image: {
       type: String,
     },
     category: {
@@ -26,11 +25,11 @@ const schema = new mongoose.Schema(
     },
     taxable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isActive: {
       type: Boolean,
-      default: true
+      default: true,
     },
     inventory: {
       type: Number,
@@ -45,7 +44,7 @@ const schema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
-  },
+  }
   // { versionKey: false, timestamps: true }
 );
 
