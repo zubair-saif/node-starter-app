@@ -10,7 +10,7 @@ class CategoryController {
         description: req.body.description,
       });
       await create.save();
-      res.json({ message: "Successfully created" });
+      res.json({ message: "Successfully created", data: create });
     } catch (e) {
       res.json({ message: "Something went wrong " + e });
     }

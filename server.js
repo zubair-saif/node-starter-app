@@ -16,7 +16,7 @@ app.use(compression());
 app.use(express.json());
 app.use(
   halmet({
-    contentSecurityPolicy: false,
+    contentSecurityPolicy: true,
     frameguard: true,
   })
 );
@@ -31,15 +31,7 @@ if (process.env.NODE_ENV === "development") {
 
 // enable cors
 app.use(cors());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "DELETE, PUT, GET, POST");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+
 // Ping app for testing connection
 app.get("/ping", (req, res) => res.status(200).send("Hello world!"));
 
@@ -50,7 +42,7 @@ require("./app/extras/routesDefinations/extras.routeDefs")(app);
 require("./app/product/routesDefinations/product.routeDefs")(app);
 
 // Set static folder
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public/program")));
 
 // Connect to database
 connectDB();

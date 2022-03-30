@@ -4,7 +4,7 @@ const productController = require("../controller/product.controller");
 const categoryController = require("../controller/category.controller");
 const multer = require("multer");
 let storage = multer.diskStorage({
-  destination: "public/program/",
+  destination: "./public/program",
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
   },
@@ -18,5 +18,6 @@ router.get(
   "/get-allcategory-product",
   categoryController.getAllCategoryProduct
 );
+router.post("/create-category", categoryController.create);
 router.get("/", productController.getAllProducts);
 module.exports = router;

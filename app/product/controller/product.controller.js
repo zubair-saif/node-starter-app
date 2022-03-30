@@ -42,8 +42,13 @@ class ProductController {
   };
   getAllProducts = async (req, res) => {
     try {
-      const product = await Product.find({});
-      res.send({ message: "Successfully fetched", data: product });
+      const product = await Product.find()
+        .populate({
+          path: "category",
+          select: "name -_id",
+        })
+        .exec();
+      res.send({ message: "Successfully fetched", product });
     } catch (e) {
       res.json({ message: "Something went wrong " + e });
     }

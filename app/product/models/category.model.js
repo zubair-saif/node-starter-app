@@ -7,30 +7,30 @@ const schema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-    image: {
-      contentType: String,
-      data: Buffer,
+    // image: {
+    //   contentType: String,
+    //   data: Buffer,
+    // },
+    description: {
+      type: String,
+      trim: true,
     },
-    description:{
-        type: String,
-        trim: true,
-    },
-    isActive: {
-      type: Boolean,
-      default: true
-    },
+    // isActive: {
+    //   type: Boolean,
+    //   default: true
+    // },
     products: [
       {
         type: mongoose.Types.ObjectId,
-        ref: 'Product'
-      }
+        ref: "Product",
+      },
     ],
     updated: Date,
     created: {
       type: Date,
-      default: Date.now
-    }
-  },
+      default: Date.now,
+    },
+  }
   // { versionKey: false, timestamps: true }
 );
 
