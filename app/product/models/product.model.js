@@ -31,7 +31,7 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    inventory: {
+    qty: {
       type: Number,
       //   ref: "Inventory",
     },

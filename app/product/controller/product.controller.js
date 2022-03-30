@@ -1,7 +1,7 @@
 const { Product, validate } = require("../models/product.model");
-
+const { Cart } = require("../models/cart.model");
 class ProductController {
-  constructor() {}
+  constructor() { }
 
   create = async (req, res) => {
     console.log("req.body", req);
@@ -53,6 +53,7 @@ class ProductController {
       res.json({ message: "Something went wrong " + e });
     }
   };
+
 }
 
 module.exports = new ProductController();
