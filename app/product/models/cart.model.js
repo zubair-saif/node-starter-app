@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const joi = require("joi");
 
 const itemSchema = new mongoose.Schema({
+  _id: false,
   productId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product",
@@ -20,13 +21,10 @@ const itemSchema = new mongoose.Schema({
     required: true,
   }
 }, {
-  timestamps: true
+  timestamps: false
 });
 const CartSchema = new mongoose.Schema({
-  items: [{
-    _id: false,
-    itemSchema
-  }],
+  items: [itemSchema],
   subTotal: {
     default: 0,
     type: Number

@@ -4,16 +4,17 @@ class ProductController {
   constructor() { }
 
   create = async (req, res) => {
-    console.log("req.body", req);
-    const url = req.protocol + "://" + req.get("host");
+
     try {
+
       const create = await Product.create({
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
         inventory: req.body.inventory,
         category: req.body.category,
-        image: url + "/public/program/" + req.file.filename,
+        image: req.file.path,
+        rating: req.body.rating,
         // discount: req.body.discount,
       });
       await create.save();

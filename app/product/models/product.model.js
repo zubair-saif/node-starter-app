@@ -35,6 +35,9 @@ const schema = new mongoose.Schema(
       type: Number,
       //   ref: "Inventory",
     },
+    rating: {
+      rate: Number, count: Number
+    },
     // discount: {
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: "Discount",

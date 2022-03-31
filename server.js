@@ -42,7 +42,7 @@ require("./app/extras/routesDefinations/extras.routeDefs")(app);
 require("./app/product/routesDefinations/product.routeDefs")(app);
 
 // Set static folder
-app.use(express.static(path.join(__dirname, "/public/program")));
+app.use('/public', express.static('public'));
 
 // Connect to database
 connectDB();

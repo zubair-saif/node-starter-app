@@ -19,7 +19,7 @@ class CartController {
         try {
             const carts = await Cart.find({}).populate({
                 path: "items.productId",
-                select: "title price total"
+                select: "price total"
             });
             return carts[0];
 
@@ -29,8 +29,10 @@ class CartController {
     }
     cart = async (req, res) => {
         try {
+            console.log(req.body);
+
             const productId = req.body.productId;
-            const quantity = Number.parseInt(req.body.quantity);
+            const quantity = req.body.quantity;
             let productDetails = await Product.findById(productId);
             if (!productDetails) {
                 return res.status(500).json({
@@ -38,8 +40,11 @@ class CartController {
                     msg: "Invalid request"
                 })
             }
+
             const carts = await this.cartAll();
+
             if (carts) {
+
                 const indexFound = carts.items.findIndex(item => item.productId == productId);
                 /**
                  *  this removes an item from the the cart if the quantity is set to zero,
@@ -58,6 +63,7 @@ class CartController {
                  * check if product exist,just add the previous quantity with the new quantity and update the total price
                 */
                 else if (indexFound !== -1) {
+                    console.log(carts.items[indexFound].quantity)
                     carts.items[indexFound].quantity = carts.items[indexFound].quantity + quantity;
                     carts.items[indexFound].total = carts.items[indexFound].quantity * productDetails.price;
                     carts.items[indexFound].price = productDetails.price
@@ -73,7 +79,7 @@ class CartController {
                     })
                     carts.subTotal = carts.items.map(item => item.total).reduce((acc, next) => acc + next);
                 }
-                //if quantity of price is 0 throw the error
+                // if quantity of price is 0 throw the error
                 // else {
                 //     return res.status(400).json({
                 //         type: "Invalid",
@@ -100,8 +106,8 @@ class CartController {
                     subTotal: parseInt(productDetails.price * quantity)
                 }
                 let cartItem = await Cart.create(cartData)
-                // let data = await cart.save();
-                res.json(cartItem);
+                let data = await cartItem.save();
+                res.json(data);
             }
 
         } catch (e) {
@@ -112,7 +118,7 @@ class CartController {
 
     emptyCart = async (req, res) => {
         try {
-            let cart = await this.cartFind();
+            let cart = await Cart.find({});
             cart.items = [];
             cart.subTotal = 0
             let data = await cart.save();
