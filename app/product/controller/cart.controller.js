@@ -42,11 +42,11 @@ class CartController {
                     msg: "Invalid request"
                 })
             }
-            //--If Cart Exists ----
+            //If Cart Exists
             if (cart) {
-                //---- check if index exists ----
+                // check if index exists
                 const indexFound = cart.items.findIndex(item => item.productId._id == productId);
-                //------this removes an item from the the cart if the quantity is set to zero,We can use this method to remove an item from the list  -------
+                //this removes an item from the the cart if the quantity is set to zero,We can use this method to remove an item from the list  -------
                 if (indexFound !== -1 && quantity <= 0) {
                     cart.items.splice(indexFound, 1);
                     if (cart.items.length == 0) {
@@ -55,14 +55,14 @@ class CartController {
                         cart.subTotal = cart.items.map(item => item.total).reduce((acc, next) => acc + next);
                     }
                 }
-                //----------check if product exist,just add the previous quantity with the new quantity and update the total price-------
+                //check if product exist,just add the previous quantity with the new quantity and update the total price
                 else if (indexFound !== -1) {
                     cart.items[indexFound].quantity = cart.items[indexFound].quantity + quantity;
                     cart.items[indexFound].total = cart.items[indexFound].quantity * productDetails.price;
                     cart.items[indexFound].price = productDetails.price
                     cart.subTotal = cart.items.map(item => item.total).reduce((acc, next) => acc + next);
                 }
-                //----Check if Quantity is Greater than 0 then add item to items Array ----
+                //Check if Quantity is Greater than 0 then add item to items Array 
                 else if (quantity > 0) {
                     cart.items.push({
                         productId: productId,
@@ -72,7 +72,7 @@ class CartController {
                     })
                     cart.subTotal = cart.items.map(item => item.total).reduce((acc, next) => acc + next);
                 }
-                //----if quantity of price is 0 throw the error -------
+                //if quantity of price is 0 throw the error 
                 else {
                     return res.status(400).json({
                         type: "Invalid",
@@ -86,7 +86,7 @@ class CartController {
                     data: data
                 })
             }
-            //------------ if there is no user with a cart...it creates a new cart and then adds the item to the cart that has been created------------
+            // if there is no user with a cart...it creates a new cart and then adds the item to the cart that has been created
             else {
                 const cartData = {
                     items: [{
@@ -98,7 +98,7 @@ class CartController {
                     subTotal: parseInt(productDetails.price * quantity)
                 }
                 cart = await Cart.create(cartData)
-                let data = await cart.save();
+                // let data = await cart.save();
                 res.json(cart);
             }
         } catch (err) {
