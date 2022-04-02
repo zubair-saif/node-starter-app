@@ -1,7 +1,7 @@
 const { Product, validate } = require("../models/product.model");
 const { Cart } = require("../models/cart.model");
-const Mongoose = require('mongoose')
-const ObjectId = Mongoose.Types.ObjectId;
+const productController = require("./product.controller");
+
 class CartController {
     constructor() { }
     cartFind = async (req, res) => {
@@ -35,13 +35,7 @@ class CartController {
         const quantity = Number.parseInt(req.body.quantity);
         try {
             let cart = await this.cartAll();
-            let productDetails = await Product.findById(productId);
-            if (!productDetails) {
-                return res.status(500).json({
-                    type: "Not Found",
-                    msg: "Invalid request"
-                })
-            }
+            let productDetails = await productController.getSingleProducts(productId);
             //If Cart Exists
             if (cart) {
                 // check if index exists

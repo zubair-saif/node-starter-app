@@ -55,6 +55,27 @@ class ProductController {
     }
   };
 
+  getSingleProduct = async (req, res) => {
+    try {
+
+      let productDetails = await Product.findById(req.params.id);
+      if (!productDetails) {
+        return res.status(500).json({
+          type: "Not Found",
+          msg: "Invalid request"
+        });
+      }
+      return productDetails;
+
+    } catch (error) {
+      res.json({ message: "Something went wrong " + error });
+    }
+  }
+
+
+
 }
+
+
 
 module.exports = new ProductController();
