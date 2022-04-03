@@ -1,6 +1,5 @@
 const { Product, validate } = require("../models/product.model");
 const { Cart } = require("../models/cart.model");
-const productController = require("./product.controller");
 
 class CartController {
     constructor() { }
@@ -35,8 +34,14 @@ class CartController {
         const quantity = Number.parseInt(req.body.quantity);
         try {
             let cart = await this.cartAll();
-            let productDetails = await productController.getSingleProducts(productId);
-            //If Cart Exists
+            let productDetails = await Product.findById(productId);
+            if (!productDetails) {
+                return res.status(500).json({
+                    type: "Not Found",
+                    msg: "Invalid request"
+                })
+            }
+            //--If Cart Exists ----
             if (cart) {
                 // check if index exists
                 const indexFound = cart.items.findIndex(item => item.productId._id == productId);
