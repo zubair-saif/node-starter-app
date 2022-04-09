@@ -41,7 +41,7 @@ class CartController {
                     msg: "Invalid request"
                 })
             }
-            //--If Cart Exists ----
+            //If Cart Exists
             if (cart) {
                 // check if index exists
                 const indexFound = cart.items.findIndex(item => item.productId._id == productId);
