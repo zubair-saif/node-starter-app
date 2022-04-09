@@ -1,7 +1,7 @@
 const { Category, validate } = require("../models/category.model");
 
 class CategoryController {
-  constructor() {}
+  constructor() { }
 
   create = async (req, res) => {
     try {
@@ -19,7 +19,6 @@ class CategoryController {
   getByCategory = async (req, res) => {
     try {
       const create = await Category.find({});
-      // await create.save();
       res.json({ message: "Successfully ", create });
     } catch (e) {
       res.json({ message: "Something went wrong " + e });
