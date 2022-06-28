@@ -28,6 +28,17 @@ const CartSchema = new mongoose.Schema({
   subTotal: {
     default: 0,
     type: Number
+  },
+  status: {
+    type: String,
+    default: 'Not processed',
+    enum: [
+      'Not processed',
+      'Processing',
+      'Shipped',
+      'Delivered',
+      'Cancelled',
+    ], // enum means string objects
   }
 }, {
   timestamps: true
