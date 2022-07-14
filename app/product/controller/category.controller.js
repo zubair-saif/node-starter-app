@@ -10,7 +10,7 @@ class CategoryController {
         description: req.body.description,
       });
       await create.save();
-      res.json({ message: "Successfully created", data: create });
+      res.json({ data: create });
     } catch (e) {
       res.json({ message: "Something went wrong " + e });
     }
@@ -18,8 +18,8 @@ class CategoryController {
 
   getByCategory = async (req, res) => {
     try {
-      const create = await Category.find({});
-      res.json({ message: "Successfully ", create });
+      const getByCategory = await Category.find({}).limit(10).exec();
+      res.json({ getByCategory });
     } catch (e) {
       res.json({ message: "Something went wrong " + e });
     }
@@ -41,7 +41,7 @@ class CategoryController {
             _id: 1,
             category: 1,
             totalProducts: { $size: "$products" },
-            products: "$products",
+            products: "$products._id",
           },
         },
       ]);

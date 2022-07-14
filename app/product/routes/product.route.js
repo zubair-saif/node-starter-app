@@ -18,6 +18,7 @@ router.get("/all-category", categoryController.getByCategory);
 router.get("/get-allcategory-product", categoryController.getAllCategoryProduct);
 router.get("/", productController.getAllProducts);
 
+
 router.post("/addtocart", cartController.cart);
 router.get("/get-cart", cartController.cartFind);
 router.get("/emptycart", cartController.emptyCart);

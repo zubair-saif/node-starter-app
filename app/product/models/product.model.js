@@ -9,6 +9,10 @@ const schema = new mongoose.Schema(
     description: {
       type: String,
     },
+    size: {
+      type: [String],
+      required: true
+    },
     price: {
       type: Number,
       required: true,
